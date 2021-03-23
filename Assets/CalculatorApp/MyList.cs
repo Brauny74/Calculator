@@ -8,7 +8,7 @@ public class MyList<T> : IList<T>
 {
     private List<T> _list = new List<T>();
 
-    public int Count => ((IList<T>)_list).Count;
+    public int Count => _list.Count;
 
     public bool IsReadOnly => ((IList<T>)_list).IsReadOnly;
 
