@@ -23,9 +23,17 @@ namespace ConsoleCalculator
     {
         private static bool ExprValid(string expr)
         {
-            Regex rx = new Regex("(?:[0-9 ()]+[*+/-])+[0-9 ()]+", RegexOptions.IgnoreCase);
+            Regex rx = new Regex("^[0-9+*-/^()., ]+$", RegexOptions.IgnoreCase);
             MatchCollection matches = rx.Matches(expr);
-            return matches.Count > 0;
+            int p = 0;
+            foreach (char c in expr)
+            {
+                if (c == '(')
+                    p++;
+                if (c == ')')
+                    p--;
+            }
+            return p == 0 && matches.Count > 0;
         }
 
         private static double Calculate(string expr)
@@ -34,20 +42,18 @@ namespace ConsoleCalculator
             return result;
         }
 
-        public static CalcResult RunExpression(string expr)
+        public static double RunExpression(string expr)
         {
             double result;
-            CalcResult output;
             if (ExprValid(expr))
             {
                 result = Calculate(expr);
-                output = new CalcResult(result, false, "Ok");
             }
             else
             {
-                output = new CalcResult(0.0, true, "Invalid Expression");
+                throw new ArgumentException("Invalid expression.");
             }
-            return output;
+            return result;
         }
     }
 }
