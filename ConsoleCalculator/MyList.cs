@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 /// <summary>
-/// Это реализация MyList через существующий List.
+/// Это реализация MyList через массив.
 /// </summary>
 public class MyList<T> : IList<T>
 {
