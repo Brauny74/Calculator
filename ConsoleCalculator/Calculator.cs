@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace CalcApp
+namespace ConsoleCalculator
 {
     public struct CalcResult
     {
