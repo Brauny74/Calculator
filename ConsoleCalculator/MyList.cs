@@ -6,7 +6,6 @@ using System.Collections.Generic;
 /// </summary>
 public class MyList<T> : IList<T>
 {
-    private List<T> _list = new List<T>();
     private T[] _array;
 
     public int Count => _array.Length;
